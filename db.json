@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Айдана Төлегенқызы",
+      "email": "aidana@gmail.com",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "fullName": "Нұржан Әлиев",
+      "email": "nurzhan@gmail.com",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "fullName": "Диас Жақып",
+      "email": "dias@gmail.com",
+      "status": "blocked"
+    },
+    {
+      "id": 4,
+      "fullName": "Анна Смирнова",
+      "email": "anna@example.com",
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "fullName": "Мария Кузнецова",
+      "email": "maria@example.com",
+      "status": "blocked"
+    }
+  ]
+}
