@@ -1,0 +1,14 @@
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #fff;
+
+  &--active {
+    background: $color-success;
+  }
+
+  &--blocked {
+    background: $color-danger;
+  }
+}

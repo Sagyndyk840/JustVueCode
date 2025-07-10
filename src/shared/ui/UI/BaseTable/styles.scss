@@ -1,0 +1,56 @@
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 4px;
+  border: 1px solid $color-border;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  th {
+    background-color: $color-bg;
+    color: $color-text;
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid $color-border;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid $color-border;
+    color: $color-text;
+  }
+
+  .empty-message {
+    text-align: center;
+    padding: 24px;
+    color: $color-muted;
+  }
+
+  .loading-message {
+    text-align: center;
+    padding: 24px;
+    color: $color-muted;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .loader {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba($color-primary, 0.2);
+    border-top-color: $color-primary;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

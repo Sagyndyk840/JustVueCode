@@ -1,0 +1,58 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+
+  &__nav,
+  &__page {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    background: $color-bg;
+    color: $color-text;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: darken($color-bg, 5%);
+      border-color: darken($color-border, 10%);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: $color-disabled;
+    }
+  }
+
+  &__nav {
+    font-weight: bold;
+  }
+
+  &__page {
+    &--active {
+      background: $color-primary;
+      color: white;
+      border-color: $color-primary-dark;
+      font-weight: bold;
+
+      &:hover {
+        background: $color-primary-dark;
+      }
+    }
+  }
+
+  &__ellipsis {
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
