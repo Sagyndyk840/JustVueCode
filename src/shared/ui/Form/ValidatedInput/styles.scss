@@ -1,0 +1,26 @@
+.validated-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__error {
+    color: $color-danger;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.error {
+  border-color: $color-danger !important;
+}

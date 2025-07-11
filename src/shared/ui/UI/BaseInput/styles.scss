@@ -1,0 +1,32 @@
+$input-padding: 10px 12px;
+$input-border-radius: 6px;
+$input-font-size: 14px;
+$input-transition: all 0.2s ease;
+$input-focus-shadow: 0 0 0 2px rgba($color-primary-rgb, 0.1);
+
+.input {
+  padding: $input-padding;
+  border: 1px solid $color-border;
+  border-radius: $input-border-radius;
+  font-size: $input-font-size;
+  color: $color-text;
+  background-color: white;
+  transition: $input-transition;
+  width: 100%;
+
+  &::placeholder {
+    color: $color-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: $input-focus-shadow;
+  }
+
+  &:disabled {
+    background-color: $color-bg-secondary;
+    color: $color-disabled;
+    cursor: not-allowed;
+  }
+}

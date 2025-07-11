@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<{
+interface IBaseButtonProps {
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'text'
   size?: 'small' | 'medium' | 'large'
   block?: boolean
-}>(), {
+}
+
+const props = withDefaults(defineProps<IBaseButtonProps>(), {
   type: 'button',
   disabled: false,
   variant: 'primary',
@@ -19,7 +21,10 @@ const buttonClass = computed(() => [
   'btn',
   `btn--${props.variant}`,
   `btn--${props.size}`,
-  { 'btn--disabled': props.disabled },
+  {
+    'btn--disabled': props.disabled,
+    'btn--block': props.block,
+  },
 ])
 </script>
 
@@ -33,6 +38,5 @@ const buttonClass = computed(() => [
   </button>
 </template>
 
-<style scoped lang="scss" src="styles.scss">
-
+<style scoped lang="scss" src="./styles.scss">
 </style>

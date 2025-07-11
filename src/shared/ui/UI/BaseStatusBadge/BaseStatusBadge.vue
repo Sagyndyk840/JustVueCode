@@ -11,14 +11,17 @@ const badgeClass = computed(() =>
     ? 'status-badge--active'
     : 'status-badge--blocked',
 )
+
+const statusText = computed(() =>
+  props.status === 'active' ? 'Активен' : 'Заблокирован',
+)
 </script>
 
 <template>
   <span class="status-badge" :class="badgeClass">
-    {{ props.status }}
+    {{ statusText }}
   </span>
 </template>
 
-<style scoped lang="scss" src="styles.scss">
-
+<style scoped lang="scss" src="./styles.scss">
 </style>

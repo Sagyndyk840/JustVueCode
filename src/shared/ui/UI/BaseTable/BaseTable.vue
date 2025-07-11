@@ -1,12 +1,15 @@
 <script setup lang="ts">
-defineProps<{
+
+interface IBaseTableProps {
   columns: {
     key: string
     title: string
   }[]
   items: Record<string, string | number>[]
   isLoading?: boolean
-}>()
+}
+
+defineProps<IBaseTableProps>()
 </script>
 
 <template>
@@ -43,5 +46,5 @@ defineProps<{
   </div>
 </template>
 
-<style scoped lang="scss" src="styles.scss">
+<style scoped lang="scss" src="./styles.scss">
 </style>

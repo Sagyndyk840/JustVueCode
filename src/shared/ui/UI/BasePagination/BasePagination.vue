@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<{
+interface IBasePaginationProps {
   page: number
   totalPages: number
   maxVisible?: number
-}>(), {
+}
+
+const props = withDefaults(defineProps<IBasePaginationProps>(), {
   maxVisible: 5,
 })
 
@@ -93,6 +95,5 @@ const pages = computed(() => {
   </div>
 </template>
 
-<style scoped lang="scss" src="styles.scss">
-
+<style scoped lang="scss" src="./styles.scss">
 </style>
