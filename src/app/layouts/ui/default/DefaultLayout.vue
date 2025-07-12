@@ -3,9 +3,10 @@
 </script>
 
 <template>
-  <RouterView />
+  <div class="default-layout">
+    <RouterView />
+  </div>
 </template>
 
-<style scoped>
-
+<style scoped lang="scss" src="./styles.scss">
 </style>

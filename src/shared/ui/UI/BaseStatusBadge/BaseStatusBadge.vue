@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IUserStatus } from '@shared/types/base.ts'
+import type { IUserStatus } from '@/shared/types/base.ts'
 import { computed } from 'vue'
 
 const props = defineProps<{

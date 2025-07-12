@@ -1,5 +1,6 @@
 import { BaseApi } from '@/shared/api/base'
-import type { IUser, IUserCreateData } from '@shared/types/user.ts'
+import type { IUser, IUserCreateData } from '@/shared/types/user.ts'
+import { buildQueryString } from '@/shared/lib/utils/buildQueryString.ts'
 
 const RESOURCE = 'users' as const
 
@@ -9,7 +10,19 @@ export const userApi = {
         limit?: number
         search?: string
     }): Promise<{ data: IUser[]; total: number }> {
-    const response = await BaseApi.get<IUser[]>(RESOURCE, { params })
+    const queryParams = {
+      _page: params.page ?? 1,
+      _limit: params.limit ?? 10,
+      ...(params.search && {
+        q: params.search,
+        _sort: 'id',
+        _order: 'asc' as const,
+      }),
+    }
+    const queryString = buildQueryString(queryParams)
+
+    const response = await BaseApi.get<IUser[]>(`${RESOURCE}?${queryString}`)
+
     return {
       data: response.data,
       total: Number(response.headers['x-total-count']) || response.data.length,

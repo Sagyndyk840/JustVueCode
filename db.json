@@ -2,9 +2,9 @@
   "users": [
     {
       "id": 1,
-      "fullName": "Айдана Төлегенқызы",
-      "email": "aidana@gmail.com",
-      "status": "active"
+      "fullName": "Айдана 3333",
+      "email": "aidana2@gmail.com",
+      "status": "blocked"
     },
     {
       "id": 2,
@@ -29,6 +29,144 @@
       "fullName": "Мария Кузнецова",
       "email": "maria@example.com",
       "status": "blocked"
+    },
+    {
+      "id": 6,
+      "fullName": "Ернар Сағындық",
+      "email": "ernar@example.com",
+      "status": "active"
+    },
+    {
+      "id": 7,
+      "fullName": "Айгерім Аманжол",
+      "email": "aigerim@example.com",
+      "status": "active"
+    },
+    {
+      "id": 8,
+      "fullName": "Михаил Петров",
+      "email": "mikhail@example.com",
+      "status": "blocked"
+    },
+    {
+      "id": 9,
+      "fullName": "Жанель Қайратқызы",
+      "email": "zhanel@example.com",
+      "status": "active"
+    },
+    {
+      "id": 10,
+      "fullName": "Тимур Оразбаев",
+      "email": "timur@example.com",
+      "status": "blocked"
+    },
+    {
+      "id": 11,
+      "fullName": "Аружан Мұрат",
+      "email": "aruzhan@example.com",
+      "status": "active"
+    },
+    {
+      "id": 12,
+      "fullName": "Иван Иванов",
+      "email": "ivan@example.com",
+      "status": "blocked"
+    },
+    {
+      "id": 13,
+      "fullName": "Жансая Төлеген",
+      "email": "zhansaya@example.com",
+      "status": "active"
+    },
+    {
+      "id": 14,
+      "fullName": "Рустам Сейітов",
+      "email": "rustam@example.com",
+      "status": "active"
+    },
+    {
+      "id": 15,
+      "fullName": "Николай Смирнов",
+      "email": "nikolay@example.com",
+      "status": "blocked"
+    },
+    {
+      "fullName": "asfasf",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 16
+    },
+    {
+      "fullName": "sas",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 17
+    },
+    {
+      "fullName": "afasf",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 18
+    },
+    {
+      "fullName": "asfasf",
+      "email": "sagindik2003@gmail.com",
+      "status": "blocked",
+      "id": 19
+    },
+    {
+      "fullName": "фыа",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 20
+    },
+    {
+      "fullName": "фыафыафыафыа",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 21
+    },
+    {
+      "fullName": "asfasf",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 22
+    },
+    {
+      "fullName": "asfasf",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 23
+    },
+    {
+      "fullName": "asaaaaaaa",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 24
+    },
+    {
+      "fullName": "asfaf",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 25
+    },
+    {
+      "fullName": "asfas",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 26
+    },
+    {
+      "fullName": "asfasf",
+      "email": "sagindik2003@gmail.com",
+      "status": "active",
+      "id": 27
+    },
+    {
+      "fullName": "фыаыа",
+      "email": "sagindik2003@gmail.com",
+      "status": "blocked",
+      "id": 28
     }
   ]
 }

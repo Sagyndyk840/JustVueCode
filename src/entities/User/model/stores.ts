@@ -1,37 +1,58 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import type { IUser, IUserCreateData } from '@/shared/types/user'
 import { userApi } from '@/entities/User/api'
+import { useNotify } from '@/shared/lib/use/useNotify.ts'
+import { getFromLocalStorage, saveToLocalStorage } from '@/shared/lib/utils/localStorage.ts'
 
 const NAMESPACE = 'user'
 
+interface FetchUsersParams {
+  page?: number
+  limit?: number
+  search?: string
+}
+
 export const useUserStore = defineStore(NAMESPACE, () => {
+  const { notify } = useNotify()
+
   const users = ref<IUser[]>([])
-  const currentUser = ref<IUser | null>(null)
   const isLoading = ref(false)
-  const error = ref<string | null>(null)
   const totalUsers = ref(0)
 
-  const activeUsers = computed(() =>
-    users.value.filter(user => user.status === 'active'),
+  const page = ref(getFromLocalStorage<number>(NAMESPACE, 'page', 1))
+  const limit = ref(getFromLocalStorage<number>(NAMESPACE, 'limit', 5))
+  const searchQuery = ref(getFromLocalStorage<string>(NAMESPACE, 'searchQuery', ''))
+
+  const totalPages = computed(() =>
+    Math.ceil(totalUsers.value / limit.value),
   )
 
-  const blockedUsers = computed(() =>
-    users.value.filter(user => user.status === 'blocked'),
-  )
+  watch(page, (newValue: number) => {
+    saveToLocalStorage<number>(NAMESPACE, 'page', newValue)
+  })
 
-  const fetchUsers = async (params?: {
-        page?: number
-        limit?: number
-        search?: string
-    }) => {
+  watch(limit, (newValue: number) => {
+    saveToLocalStorage<number>(NAMESPACE, 'limit', newValue)
+  })
+
+  watch(searchQuery, (newValue: string) => {
+    saveToLocalStorage<string>(NAMESPACE, 'searchQuery', newValue)
+  })
+
+  const fetchUsers = async (params?: FetchUsersParams) => {
     try {
       isLoading.value = true
-      const { data, total } = await userApi.getUsersList(params || {})
+      const { data, total } = await userApi.getUsersList({
+        page: params?.page ?? page.value,
+        limit: params?.limit ?? limit.value,
+        search: params?.search ?? searchQuery.value,
+      })
       users.value = data
       totalUsers.value = total
     } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to fetch users'
+      const message = err instanceof Error ? err.message : 'Ошибка при загрузке пользователей'
+      notify(message, 'error')
     } finally {
       isLoading.value = false
     }
@@ -40,9 +61,10 @@ export const useUserStore = defineStore(NAMESPACE, () => {
   const fetchUserById = async (id: string | number) => {
     try {
       isLoading.value = true
-      currentUser.value = await userApi.getUserById(id)
+      return await userApi.getUserById(id)
     } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to fetch user'
+      const message = err instanceof Error ? err.message : 'Ошибка при загрузке пользователя'
+      notify(message, 'error')
     } finally {
       isLoading.value = false
     }
@@ -51,11 +73,12 @@ export const useUserStore = defineStore(NAMESPACE, () => {
   const createUser = async (userData: IUserCreateData) => {
     try {
       isLoading.value = true
-      const newUser = await userApi.createUser(userData)
-      users.value.unshift(newUser)
-      return newUser
+      await userApi.createUser(userData)
+      await fetchUsers()
+      return true
     } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to create user'
+      const message = err instanceof Error ? err.message : 'Ошибка при создании пользователя'
+      notify(message, 'error')
       throw err
     } finally {
       isLoading.value = false
@@ -65,39 +88,38 @@ export const useUserStore = defineStore(NAMESPACE, () => {
   const updateUser = async (id: string | number, userData: Partial<IUser>) => {
     try {
       isLoading.value = true
-      const updatedUser = await userApi.updateUser(id, userData)
-
-      const index = users.value.findIndex(u => u.id === id)
-      if (index !== -1) {
-        users.value[index] = { ...users.value[index], ...updatedUser }
-      }
-
-      if (currentUser.value?.id === id) {
-        currentUser.value = { ...currentUser.value, ...updatedUser }
-      }
-
-      return updatedUser
+      await userApi.updateUser(id, userData)
+      await fetchUsers()
+      return true
     } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to update user'
+      const message = err instanceof Error ? err.message : 'Ошибка при обновлении пользователя'
+      notify(message, 'error')
       throw err
     } finally {
       isLoading.value = false
     }
   }
 
+  const resetPagination = async () => {
+    page.value = 1
+    searchQuery.value = ''
+    await fetchUsers()
+  }
+
   return {
     users,
-    currentUser,
     isLoading,
-    error,
     totalUsers,
 
-    activeUsers,
-    blockedUsers,
+    page,
+    limit,
+    searchQuery,
+    totalPages,
 
     fetchUsers,
     fetchUserById,
     createUser,
     updateUser,
+    resetPagination,
   }
 })

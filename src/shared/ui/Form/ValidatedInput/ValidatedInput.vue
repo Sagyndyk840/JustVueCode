@@ -7,6 +7,7 @@ interface IValidatedInputProps {
   error?: string
   fieldName?: string
   disabled?: boolean
+  label?: string
 }
 
 const model = defineModel<string>({
@@ -23,6 +24,7 @@ const emit = defineEmits<{
 const handleBlur = () => {
   emit('blur', props.fieldName)
 }
+
 </script>
 
 <template>
@@ -33,6 +35,7 @@ const handleBlur = () => {
         :placeholder="placeholder"
         :disabled="disabled"
         :class="{ 'error': error }"
+        :label="label"
         @blur="handleBlur"
     />
     <Transition name="fade">

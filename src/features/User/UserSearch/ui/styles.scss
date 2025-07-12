@@ -1,0 +1,13 @@
+.user-search {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  &__input {
+    flex: 1;
+  }
+
+  &__button {
+    flex-shrink: 0;
+  }
+}

@@ -1,29 +1,15 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import { ref } from 'vue'
-import BaseTable from '@/shared/ui/UI/BaseTable/BaseTable.vue'
-const isLoading = ref(false)
-
-const columns = [
-  { key: 'id', title: 'ID' },
-  { key: 'name', title: 'Имя' },
-  { key: 'email', title: 'Email' },
-]
-
-const items = ref([
-  { id: 1, name: 'Айбек', email: 'aibek@mail.kz' },
-  { id: 2, name: 'Анель', email: 'anel@mail.kz' },
-])
-
+import BaseNotify from '@/shared/ui/UI/BaseNotify/BaseNotify.vue'
 </script>
 
 <template>
-  <RouterView />
-  <BaseTable
-      :columns="columns"
-      :items="items"
-      :is-loading="isLoading"
-  />
+  <main class="wrapper">
+    <div class="container">
+      <RouterView />
+    </div>
+  </main>
+  <BaseNotify />
 </template>
 
 <style scoped>

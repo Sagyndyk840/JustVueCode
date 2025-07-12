@@ -22,7 +22,7 @@
 
   &--primary {
     background-color: $color-primary;
-    color: white;
+    color: $white;
 
     &:hover:not(:disabled) {
       background-color: $color-primary-dark;
@@ -42,7 +42,7 @@
 
   &--success {
     background-color: $color-success;
-    color: white;
+    color: $white;
 
     &:hover:not(:disabled) {
       opacity: 0.9;
@@ -51,7 +51,7 @@
 
   &--danger {
     background-color: $color-danger;
-    color: white;
+    color: $white;
 
     &:hover:not(:disabled) {
       opacity: 0.9;

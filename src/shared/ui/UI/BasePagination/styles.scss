@@ -21,8 +21,8 @@
     transition: all 0.2s ease;
 
     &:hover:not(:disabled) {
-      background: darken($color-bg, 5%);
-      border-color: darken($color-border, 10%);
+      background: $color-bg;
+      border-color: $color-border;
     }
 
     &:disabled {
@@ -39,7 +39,7 @@
   &__page {
     &--active {
       background: $color-primary;
-      color: white;
+      color: $white;
       border-color: $color-primary-dark;
       font-weight: bold;
 

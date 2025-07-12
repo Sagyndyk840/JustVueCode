@@ -2,7 +2,9 @@ $input-padding: 10px 12px;
 $input-border-radius: 6px;
 $input-font-size: 14px;
 $input-transition: all 0.2s ease;
+$color-primary-rgb: rgb(0, 150, 136);
 $input-focus-shadow: 0 0 0 2px rgba($color-primary-rgb, 0.1);
+
 
 .input {
   padding: $input-padding;
@@ -13,6 +15,23 @@ $input-focus-shadow: 0 0 0 2px rgba($color-primary-rgb, 0.1);
   background-color: white;
   transition: $input-transition;
   width: 100%;
+
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &.error {
+      input {
+        border-color: $color-danger !important;
+      }
+    }
+  }
+
+  &-label {
+    font-size: 14px;
+    color: #333;
+  }
 
   &::placeholder {
     color: $color-muted;

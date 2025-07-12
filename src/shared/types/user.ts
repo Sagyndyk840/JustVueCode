@@ -1,4 +1,4 @@
-import type { IUserStatus } from '@shared/types/base.ts'
+import type { IUserStatus } from '@/shared/types/base.ts'
 
 export interface IUser {
     id: number
