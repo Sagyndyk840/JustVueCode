@@ -2,8 +2,8 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/Sagyndyk840/just-vue-code.git
-   cd test-simourg
+   git clone [https://github.com/Sagyndyk840/just-vue-code.git](https://github.com/Sagyndyk840/JustVueCode.git)
+   cd название проекта
 
 2. Установите зависимости
    ```bash
